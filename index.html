@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Рентабельність операційної діяльності промислових підприємств</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<h1>Рентабельність операційної діяльності промислових підприємств</h1>
+<p class="mu">Індикатор виробничої безпеки в системі оцінювання економічної безпеки держави. Навчальна платформа на основі Методичних рекомендацій (наказ Мінекономрозвитку № 1277 від 29.10.2013, втратив чинність у 2025 р.).</p>
+
+<section class="card">
+<h2>1. Країна та період</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+<div><label for="country">Країна</label>
+<select id="country"></select></div>
+<div id="otherBox" hidden><label for="other">Назва країни</label><input id="other" maxlength="60"></div>
+<div><label for="unit">Одиниця вимірювання сум</label>
+<select id="unit"><option>млн грн</option><option>тис. грн</option><option>млрд грн</option><option>млн євро</option><option>млн дол. США</option><option>національна валюта (млн)</option></select></div>
+</div>
+<p class="mu">Показник є відносним, тому одиниця сум не впливає на результат, але обидві величини мають бути в одній і тій самій одиниці.</p>
+</section>
+
+<section class="card">
+<h2>2. Вихідні дані за роками</h2>
+<div class="tw"><table id="inp"><thead><tr><th>Рік</th><th>Дохід від операційної діяльності</th><th>Витрати операційної діяльності</th><th></th></tr></thead><tbody></tbody></table></div>
+<button id="add" class="sec">+ Додати рік</button>
+<button id="calc">Розрахувати</button>
+<button id="demo" class="sec">Приклад даних</button>
+<button id="clr" class="sec">Очистити</button>
+<ul id="errs" class="errs"></ul>
+</section>
+
+<section class="card" id="res" hidden>
+<h2>3. Результати</h2>
+<div id="ctry" class="mu"></div>
+<div class="tw"><table id="out"><thead><tr><th>Рік</th><th>Операційний результат</th><th>Витрати</th><th>Рентабельність, %</th><th>Рівень безпеки</th></tr></thead><tbody></tbody></table></div>
+<p id="avg"></p>
+<h2>Аналітичний висновок</h2>
+<p id="concl"></p>
+</section>
+
+<section class="card">
+<h2>Методика</h2>
+<p><b>Формула:</b> <code>Р = (Д − В) / В × 100 %</code>, де Д — дохід від операційної діяльності, В — витрати операційної діяльності; чисельник — прибуток (збиток) від операційної діяльності. Показник — у відсотках і показує, скільки прибутку припадає на 1 грн операційних витрат.</p>
+<p><b>Середнє значення:</b> середнє арифметичне річних значень за період; за ним визначається підсумковий рівень.</p>
+<p><b>Порогові значення</b> (задаються в константі <code>THRESHOLDS</code> у коді):</p>
+<ul>
+<li>≥ <span id="t1"></span> % — <b class="ok">оптимальний (безпечний)</b> рівень;</li>
+<li>від <span id="t2"></span> % до порогового — <b class="wr">небезпечний</b> рівень;</li>
+<li>&lt; <span id="t3"></span> % (збитковість) — <b class="er">критичний</b> рівень.</li>
+</ul>
+<p class="mu"><b>Увага щодо джерела.</b> Текст наказу № 1277 не вдалося відкрити автоматично (сайт Верховної Ради блокує доступ), тому пороги тут наведено за документально підтвердженим пороговим значенням «не менше 5 %» з попередньої Методики (наказ № 60 від 02.03.2007), а межа «0 %» — як межа збитковості. Перед здаванням роботи звірте формулу та пороги з таблицею індикаторів у наказі № 1277 і за потреби виправте константи <code>THRESHOLDS</code> та <code>calcROD</code> у кінці файлу.</p>
+<p class="mu">Джерело (APA): Міністерство економічного розвитку і торгівлі України. (2013). <i>Про затвердження Методичних рекомендацій щодо розрахунку рівня економічної безпеки України</i>: Наказ від 29 жовтня 2013 р. № 1277. Верховна Рада України. https://zakon.rada.gov.ua/rada/show/v1277731-13#Text</p>
+</section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
